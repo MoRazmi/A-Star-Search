@@ -45,4 +45,3 @@ class Graph:
     def close_node(self, node):
         """Close the node after A* search completed!"""
         self.nodes[node].close_node()
-
