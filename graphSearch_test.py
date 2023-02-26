@@ -16,7 +16,13 @@ g.update_edge()
 a = graphSearch_A_star_Search.A_Star(g)
 node_goal = len(g.nodes)
 a.run_algorithm(node_goal)
-a.print_sorted_nodes()
+
+for node_id, node in g.nodes.items():
+    print(node_id)
+    print(node.heuristic_cost)
+    for neighbor, weight in node.edges.items():
+        print(f"  edge to node {neighbor} with weight {weight}")
+
 
 """ 
 print(g.nodes[3].edges.keys())

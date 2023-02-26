@@ -12,10 +12,11 @@ class A_Star:
         return all_closed
     
     def update_sorted_list(self, node):
-         if node in self.sortedList:
+         if node in self.sorted_nodes:
               self.sorted_nodes.remove(node)
-         self.sorted_nodes.append(node)
-         self.sorted_nodes.sort(key = lambda n: n.self.node[node].estTotCost)
+         self.sorted_nodes.append((node, self.graph.nodes[node].estTotCost))
+         self.sorted_nodes.sort(key = lambda x: x[1])
+         print(self.sorted_nodes)
 
     def get_neighbours_node(self, node_number):
          key_list = list(self.graph.nodes[node_number].edges.keys())
@@ -24,8 +25,9 @@ class A_Star:
     
     def run_algorithm(self, node_goal):
         all_closed = False
-        self.graph.nodes[1].close_node()
         self.graph.nodes[1].save_pastCost(0)
+        self.graph.nodes[1].update_estTotCost()
+        self.update_sorted_list(1)
         while not all_closed:
              for node in self.graph.nodes.values():
                   if not node.searchConditionClosed:
@@ -35,11 +37,13 @@ class A_Star:
                        for neighbor in self.get_neighbours_node(node.id):
                             if self.graph.nodes[neighbor].searchConditionClosed == False:
                                  tenative_past_cost = self.graph.nodes[node.id].past_cost + float(self.graph.nodes[node.id].edges[neighbor])
-                                 if tenative_past_cost < self.graph.nodes[node.id].past_cost:
-                                         self.node[node].past_cost = tenative_past_cost
-                                         self.node[neighbor].add_parent(node)
-                                         self.update_sorted_list(self.node[node].id , self.node[node].estTotCost)
-        all_closed = self.check_all_Closed(self)
+                                 print(self.graph.nodes[node.id].past_cost)
+                                 if tenative_past_cost < self.graph.nodes[neighbor].past_cost:
+                                         self.graph.nodes[neighbor].past_cost = tenative_past_cost
+                                         self.graph.nodes[neighbor].update_estTotCost()
+                                         self.graph.nodes[neighbor].add_parent(node)
+                                         self.update_sorted_list(self.graph.nodes[neighbor].id )
+        all_closed = self.check_all_Closed()
         return False
     
     def print_sorted_nodes(self):

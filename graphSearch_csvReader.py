@@ -15,7 +15,7 @@ def read_csv_file(file_path, data):
 def node_extraxor(g):
     """Extract nodes after read csv file"""
     node_data = []
-    node_data = read_csv_file('nodes.csv', node_data)
+    node_data = read_csv_file('nodes_debug.csv', node_data)
     for row in range(len(node_data)):
         g.add_node(int(node_data[row][0]))
         g.add_position(int(node_data[row][0]), float(node_data[row][1]), float(node_data[row][2]))
@@ -26,7 +26,7 @@ def node_extraxor(g):
 def edge_extractor (g):
     """Extract edges after read csv file"""
     edge_data = []
-    edge_data = read_csv_file('edges.csv', edge_data)
+    edge_data = read_csv_file('edges_debug.csv', edge_data)
     for row in range(len(edge_data)):
         g.add_edge(int(edge_data[row][0]), int(edge_data[row][1]), edge_data[row][2])
   

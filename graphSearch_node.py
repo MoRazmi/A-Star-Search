@@ -41,6 +41,9 @@ class Node:
     def add_parent(self, parent):
         """Add the parent to the node"""
         self.parent = parent
+    
+    def get_parent(self):
+        return self.parent
 
     def close_node(self):
         self.searchConditionClosed = True
