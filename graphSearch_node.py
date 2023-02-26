@@ -20,7 +20,9 @@ class Node:
         self.parent = 0
         self.heuristic_cost = 0
         self.past_cost = INFINITY
+        self.estTotCost = self.heuristic_cost + self.past_cost
         self.position = {}
+        self.searchConditionClosed = False
         
     def add_heu_cost(self, heuristic_cost):
         """Add heuritic cost to the node, i.e. the best guess
@@ -39,3 +41,12 @@ class Node:
     def add_parent(self, parent):
         """Add the parent to the node"""
         self.parent = parent
+
+    def close_node(self):
+        self.searchConditionClosed = True
+    
+    def save_pastCost(self, pasCost):
+        self.past_cost = pasCost
+    
+    def update_estTotCost(self):
+        self.estTotCost = self.past_cost + self.heuristic_cost

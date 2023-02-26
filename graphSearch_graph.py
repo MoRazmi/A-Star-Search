@@ -5,9 +5,13 @@ class Graph:
     def __init__(self):
         self.nodes = {}
 
+
     def add_node(self, id):
         """Add a node new node to the graph with three new parameters: ID, Position, and heurusitic cost"""
         self.nodes[id] = graphSearch_node.Node(id)
+        if (id == 1):
+             self.nodes[id].save_pastCost(0)
+
     
     def add_position(self, node1 , x, y):
         """Add a position x and y coordinates"""
@@ -37,4 +41,8 @@ class Graph:
     def update_edge(self):
         """Update graph with csv edges including two nodes and weights connecting them."""
         graphSearch_csvReader.edge_extractor(self)
+
+    def close_node(self, node):
+        """Close the node after A* search completed!"""
+        self.nodes[node].close_node()
 

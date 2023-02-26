@@ -28,5 +28,5 @@ def edge_extractor (g):
     edge_data = []
     edge_data = read_csv_file('edges.csv', edge_data)
     for row in range(len(edge_data)):
-        g.add_edge(edge_data[row][0], edge_data[row][1], edge_data[row][2])
+        g.add_edge(int(edge_data[row][0]), int(edge_data[row][1]), edge_data[row][2])
   
