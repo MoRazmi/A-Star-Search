@@ -1,6 +1,6 @@
 import graphSearch_graph
 import graphSearch_csvReader
-
+from array import array
 class A_Star:
     def __init__(self, graph):
         self.graph = graph
@@ -31,16 +31,21 @@ class A_Star:
          return(key_list)
 
     def print_sorted_nodes(self, node_goal):
-        print(node_goal)
-        graphSearch_csvReader.result_printer(node_goal) 
+        path =[]
+        path.append(node_goal)
+  #      print(node_goal)
+#        graphSearch_csvReader.result_printer(node_goal) 
         parent_id = node_goal
         while True:
          parent_id = self.graph.nodes[node_goal].parent 
          node_goal = parent_id
-         print(parent_id)
-         graphSearch_csvReader.result_printer(parent_id) 
+         path.append(parent_id) 
          if parent_id == 1:
+          path.reverse()
+          graphSearch_csvReader.result_printer(path)
+          print(path)
           break
+         
         
 
     def run_algorithm(self, node_goal):

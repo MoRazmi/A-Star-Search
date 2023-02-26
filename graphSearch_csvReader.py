@@ -11,10 +11,10 @@ def read_csv_file(file_path, data):
                data.append(row)
      return data
 
-def write_csv_file(file_path, data):
-     with open(file_path, 'a', newline='') as csv_file:
+def write_csv_file(file_path, array):
+     with open(file_path, 'w', newline='') as csv_file:
           csv_writer = csv.writer(csv_file)
-          csv_writer.writerow([str(data)])
+          csv_writer.writerow(map(lambda x:x, array))
 
 def node_extraxor(g):
     """Extract nodes after read csv file"""
@@ -34,5 +34,5 @@ def edge_extractor (g):
     for row in range(len(edge_data)):
         g.add_edge(int(edge_data[row][0]), int(edge_data[row][1]), edge_data[row][2])
   
-def result_printer(node_id):
-     write_csv_file('results/path.csv', node_id)
+def result_printer(path):
+     write_csv_file('results/path.csv', path)
