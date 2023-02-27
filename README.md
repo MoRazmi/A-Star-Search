@@ -5,6 +5,11 @@ This software is designed to implement A* graph search algorithm for robotics mo
 planning. The software includes 5 python files that work together to create a graph 
 and find the shortest path between two nodes in the graph.
 
+
+
+https://user-images.githubusercontent.com/96496279/221480509-ed988f98-8614-419a-bdac-c91813ade5bf.mp4
+
+
 File Descriptions
 graphsearch_node.py - This file contains the Node class that represents a node in the graph. 
 Each node has an x and y coordinate, a cost value, a parent node, and a list of its neighbors.
