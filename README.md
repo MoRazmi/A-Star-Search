@@ -28,7 +28,3 @@ from and to csv files.
 graphsearch_main.py - This file is the main file that runs the A* search algorithm. It 
 creates a graph, adds nodes and edges to it, reads nodes and edges from csv files, and 
 finds the shortest path between two nodes.
-
-Installation
-To run this software, you need to have Python 3 installed on your machine. 
-You can download it from the official website: https://www.python.org/downloads/
